@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>라임휴 프리지아 펜션 · 계룡산</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --moss: #3d4a35;
+    --moss-light: #5a6b4f;
+    --moss-pale: #8fa082;
+    --cream: #f5f0e8;
+    --cream-dark: #ede5d5;
+    --stone: #c8bfad;
+    --stone-dark: #9e9285;
+    --bark: #6b5a47;
+    --night: #1a1f17;
+    --text: #2c2820;
+    --text-mid: #5a5248;
+    --text-light: #8a8078;
+    --serif: 'Noto Serif KR', serif;
+    --sans: 'Noto Sans KR', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.25rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(245,240,232,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,191,173,0.4);
+  }
+  .nav-logo {
+    font-family: var(--serif); font-size: 1.1rem; font-weight: 500;
+    color: var(--moss); letter-spacing: 0.04em;
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 0.8rem; color: var(--text-mid); text-decoration: none;
+    letter-spacing: 0.06em; font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--moss); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding: 8rem 2rem 5rem;
+    text-align: center;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 80%, rgba(90,107,79,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 20% 20%, rgba(107,90,71,0.08) 0%, transparent 60%),
+      var(--cream);
+  }
+
+  /* decorative mountain silhouette */
+  .hero-mountain {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 280px; opacity: 0.06;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.18em; color: var(--moss-pale);
+    text-transform: uppercase; margin-bottom: 1.5rem;
+    font-weight: 400; position: relative;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: ''; display: block; height: 1px; width: 40px;
+    background: var(--moss-pale);
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 300; line-height: 1.35;
+    color: var(--night);
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .hero-title em {
+    font-style: normal; color: var(--moss);
+  }
+
+  .hero-sub {
+    font-size: 0.95rem; color: var(--text-mid);
+    line-height: 2; max-width: 480px; margin: 0 auto 3rem;
+    font-weight: 300;
+  }
+
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.9rem 2.2rem;
+    background: var(--moss); color: #fff;
+    font-size: 0.82rem; letter-spacing: 0.1em;
+    text-decoration: none; font-family: var(--sans); font-weight: 400;
+    transition: background 0.25s, transform 0.2s;
+    position: relative;
+  }
+  .hero-cta:hover { background: var(--moss-light); transform: translateY(-1px); }
+
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem; letter-spacing: 0.14em; color: var(--text-light);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 1px; height: 40px; background: var(--stone);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 6rem 2rem;
+    max-width: 900px; margin: 0 auto;
+  }
+  .section-sm { max-width: 680px; }
+
+  .section-tag {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--moss-pale); margin-bottom: 0.75rem; display: block;
+  }
+  .section-title {
+    font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 300; line-height: 1.4; color: var(--night);
+    margin-bottom: 1.5rem;
+  }
+  .section-body {
+    font-size: 0.92rem; color: var(--text-mid); line-height: 2.1;
+    font-weight: 300;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--stone), transparent);
+  }
+
+  /* STORY */
+  .story-wrap {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    align-items: start; margin-top: 2.5rem;
+  }
+  .story-quote {
+    font-family: var(--serif); font-size: 1.3rem; font-weight: 300;
+    color: var(--moss); line-height: 1.7;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--moss-pale);
+  }
+  .story-text { font-size: 0.88rem; color: var(--text-mid); line-height: 2.2; }
+  .story-text p + p { margin-top: 1rem; }
+
+  /* BENEFITS */
+  .benefit-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+    background: var(--stone); margin-top: 3rem;
+    border: 1px solid var(--stone);
+  }
+  .benefit-item {
+    background: var(--cream); padding: 2rem 1.75rem;
+    transition: background 0.2s;
+  }
+  .benefit-item:hover { background: var(--cream-dark); }
+  .benefit-num {
+    font-family: var(--serif); font-size: 2rem; color: var(--stone);
+    font-weight: 300; line-height: 1; margin-bottom: 0.75rem;
+  }
+  .benefit-title { font-size: 0.9rem; font-weight: 500; color: var(--night); margin-bottom: 0.5rem; }
+  .benefit-desc { font-size: 0.82rem; color: var(--text-light); line-height: 1.8; }
+
+  /* ROOMS */
+  .room-section { background: var(--night); color: #fff; padding: 6rem 2rem; }
+  .room-inner { max-width: 900px; margin: 0 auto; }
+  .room-section .section-tag { color: var(--moss-pale); }
+  .room-section .section-title { color: #f0ebe0; }
+
+  .room-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .room-card {
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 2rem; position: relative;
+    transition: border-color 0.25s;
+  }
+  .room-card:hover { border-color: var(--moss-pale); }
+  .room-card.main { border-color: rgba(90,107,79,0.5); }
+  .room-card.main::before {
+    content: '추천';
+    position: absolute; top: 1.25rem; right: 1.25rem;
+    font-size: 0.65rem; letter-spacing: 0.1em;
+    background: var(--moss); color: #fff;
+    padding: 3px 10px;
+  }
+  .room-label { font-size: 0.7rem; letter-spacing: 0.15em; color: var(--moss-pale); margin-bottom: 0.75rem; }
+  .room-name { font-family: var(--serif); font-size: 1.4rem; font-weight: 300; color: #f0ebe0; margin-bottom: 0.5rem; }
+  .room-cap { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; }
+  .room-features { list-style: none; }
+  .room-features li {
+    font-size: 0.82rem; color: rgba(255,255,255,0.6);
+    padding: 0.45rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .room-features li::before { content: '·'; color: var(--moss-pale); }
+
+  /* EXPERIENCE */
+  .exp-timeline { margin-top: 3rem; position: relative; }
+  .exp-timeline::before {
+    content: ''; position: absolute; left: 3rem; top: 0; bottom: 0;
+    width: 1px; background: var(--stone);
+  }
+  .exp-item {
+    display: flex; gap: 2rem; align-items: flex-start;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid rgba(200,191,173,0.3);
+  }
+  .exp-time {
+    font-family: var(--serif); font-size: 1rem; color: var(--moss);
+    min-width: 6rem; text-align: right; font-weight: 300;
+    padding-top: 0.15rem;
+  }
+  .exp-dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--cream); border: 1px solid var(--moss-pale);
+    margin-top: 0.35rem; flex-shrink: 0;
+  }
+  .exp-content {}
+  .exp-title { font-size: 0.9rem; font-weight: 500; color: var(--night); margin-bottom: 0.35rem; }
+  .exp-desc { font-size: 0.82rem; color: var(--text-light); line-height: 1.8; }
+
+  /* REVIEWS */
+  .review-section { background: var(--cream-dark); padding: 6rem 2rem; }
+  .review-inner { max-width: 900px; margin: 0 auto; }
+  .review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+  .review-card {
+    background: var(--cream); padding: 1.75rem;
+    border-top: 2px solid var(--moss-pale);
+  }
+  .review-text {
+    font-family: var(--serif); font-size: 0.92rem;
+    color: var(--text); line-height: 1.9; font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .review-author { font-size: 0.75rem; color: var(--text-light); letter-spacing: 0.05em; }
+
+  .stat-row { display: flex; gap: 0; margin-top: 3rem; border: 1px solid var(--stone); }
+  .stat-item { flex: 1; padding: 1.75rem; text-align: center; border-right: 1px solid var(--stone); }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-family: var(--serif); font-size: 2rem; color: var(--moss); font-weight: 300; }
+  .stat-label { font-size: 0.72rem; color: var(--text-light); margin-top: 0.35rem; letter-spacing: 0.04em; }
+
+  /* WHY */
+  .why-list { margin-top: 2.5rem; }
+  .why-item {
+    display: flex; gap: 1.5rem; align-items: flex-start;
+    padding: 1.5rem 0; border-bottom: 1px solid rgba(200,191,173,0.4);
+  }
+  .why-idx {
+    font-family: var(--serif); font-size: 1.4rem; color: var(--stone);
+    font-weight: 300; min-width: 2rem; line-height: 1;
+  }
+  .why-title { font-size: 0.9rem; font-weight: 500; color: var(--night); margin-bottom: 0.35rem; }
+  .why-desc { font-size: 0.82rem; color: var(--text-light); line-height: 1.8; }
+
+  /* FAQ */
+  .faq-list { margin-top: 2rem; }
+  .faq-item { border-bottom: 1px solid rgba(200,191,173,0.5); }
+  .faq-q {
+    padding: 1.25rem 0; font-size: 0.9rem; font-weight: 400;
+    color: var(--text); cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    user-select: none;
+  }
+  .faq-q::after { content: '+'; font-size: 1.2rem; color: var(--moss-pale); font-weight: 300; transition: transform 0.2s; }
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    font-size: 0.85rem; color: var(--text-mid); line-height: 1.9;
+    max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s;
+    padding: 0 0; font-weight: 300;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding: 0 0 1.25rem; }
+
+  /* CTA */
+  .cta-section {
+    background: var(--moss); padding: 7rem 2rem;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0,0,0,0.25) 0%, transparent 70%);
+  }
+  .cta-section * { position: relative; }
+  .cta-label { font-size: 0.7rem; letter-spacing: 0.2em; color: var(--moss-pale); text-transform: uppercase; margin-bottom: 1.25rem; display: block; }
+  .cta-title { font-family: var(--serif); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300; color: #f0ebe0; line-height: 1.4; margin-bottom: 1rem; }
+  .cta-sub { font-size: 0.88rem; color: rgba(240,235,224,0.65); margin-bottom: 2.5rem; line-height: 1.9; }
+  .cta-btn {
+    display: inline-block; padding: 1rem 2.8rem;
+    background: var(--cream); color: var(--moss);
+    font-size: 0.82rem; letter-spacing: 0.1em;
+    text-decoration: none; font-family: var(--sans); font-weight: 500;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .cta-btn:hover { background: #fff; transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background: var(--night); padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  footer p { font-size: 0.75rem; color: rgba(255,255,255,0.25); line-height: 1.9; }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up:nth-child(2) { transition-delay: 0.1s; }
+  .fade-up:nth-child(3) { transition-delay: 0.2s; }
+  .fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 4rem; }
+    .section { padding: 4rem 1.5rem; }
+    .story-wrap { grid-template-columns: 1fr; }
+    .benefit-grid { grid-template-columns: 1fr; }
+    .room-grid { grid-template-columns: 1fr; }
+    .review-grid { grid-template-columns: 1fr; }
+    .stat-row { flex-direction: column; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--stone); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">라임휴 · 프리지아</div>
+  <div class="nav-links">
+    <a href="#story">소개</a>
+    <a href="#rooms">객실</a>
+    <a href="#experience">이용 안내</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">예약 문의</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <svg class="hero-mountain" viewBox="0 0 1440 280" preserveAspectRatio="none">
+    <path d="M0,280 L0,180 L120,120 L240,160 L360,80 L480,130 L600,40 L720,100 L840,60 L960,110 L1080,50 L1200,120 L1320,90 L1440,140 L1440,280 Z" fill="var(--moss)"/>
+    <path d="M0,280 L0,220 L180,170 L300,200 L420,140 L540,180 L660,120 L780,160 L900,130 L1020,170 L1140,140 L1260,180 L1440,160 L1440,280 Z" fill="var(--bark)" opacity="0.4"/>
+  </svg>
+
+  <div class="hero-eyebrow">계룡산 자락 · 충청남도</div>
+  <h1 class="hero-title">
+    아무것도 안 해도 되는 곳,<br>
+    <em>라임휴에서 하루</em>
+  </h1>
+  <p class="hero-sub">
+    도심에서 40분.<br>
+    산 속에서는 시간이 다르게 흐릅니다.<br>
+    바비큐 향기, 밤하늘 별, 이른 아침 새소리.
+  </p>
+  <a href="#contact" class="hero-cta">예약 문의하기 →</a>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STORY -->
+<div id="story">
+<div class="section section-sm">
+  <span class="section-tag">story</span>
+  <h2 class="section-title fade-up">직접 자연을 지켜온<br>20년의 공간</h2>
+  <div class="story-wrap">
+    <div class="story-quote fade-up">
+      "이곳에 오는 분들 대부분이<br>다음에 또 오고 싶다는 말을 남깁니다."
+    </div>
+    <div class="story-text fade-up">
+      <p>계룡산 자락에서 20년 넘게 자리를 지켜온 공간입니다. 화려한 인테리어보다 자연 그대로의 풍경을 살리는 것을 원칙으로 해왔습니다.</p>
+      <p>프리지아 객실은 넓은 마당과 독립된 바비큐 시설을 갖추고 있어, 가족 단위나 소그룹 여행객이 온전히 자기만의 시간을 보낼 수 있도록 설계됐습니다.</p>
+      <p>그게 저희가 20년 동안 지켜온 기준입니다.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BENEFITS -->
+<div class="section">
+  <span class="section-tag">benefit</span>
+  <h2 class="section-title fade-up">라임휴에서만<br>경험할 수 있는 것들</h2>
+  <div class="benefit-grid">
+    <div class="benefit-item fade-up">
+      <div class="benefit-num">01</div>
+      <div class="benefit-title">독립 바비큐장</div>
+      <div class="benefit-desc">객실마다 독립된 바비큐 공간. 옆 객실 눈치 없이 마당을 온전히 쓸 수 있습니다.</div>
+    </div>
+    <div class="benefit-item fade-up">
+      <div class="benefit-num">02</div>
+      <div class="benefit-title">계룡산 접근</div>
+      <div class="benefit-desc">등산로 바로 인접. 아침 가볍게 산책하고 돌아올 수 있는 거리입니다.</div>
+    </div>
+    <div class="benefit-item fade-up">
+      <div class="benefit-num">03</div>
+      <div class="benefit-title">빛공해 없는 밤하늘</div>
+      <div class="benefit-desc">도심에서 벗어난 계룡산 자락. 맑은 날 밤하늘이 확연히 다릅니다.</div>
+    </div>
+    <div class="benefit-item fade-up">
+      <div class="benefit-num">04</div>
+      <div class="benefit-title">독채형 구조</div>
+      <div class="benefit-desc">타 투숙객과 동선이 겹치지 않는 완전 독립 공간. 진짜 쉬러 온 기분입니다.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ROOMS -->
+<section class="room-section" id="rooms">
+  <div class="room-inner">
+    <span class="section-tag">rooms</span>
+    <h2 class="section-title fade-up">객실 안내</h2>
+    <div class="room-grid">
+      <div class="room-card main fade-up">
+        <div class="room-label">Freesia A</div>
+        <div class="room-name">프리지아 A동</div>
+        <div class="room-cap">최대 6인 · 가족 · 소그룹</div>
+        <ul class="room-features">
+          <li>독립 마당 + 바비큐장</li>
+          <li>침실 2개</li>
+          <li>넓은 거실</li>
+          <li>풀옵션 주방</li>
+          <li>요금 문의</li>
+        </ul>
+      </div>
+      <div class="room-card fade-up">
+        <div class="room-label">Freesia B</div>
+        <div class="room-name">프리지아 B동</div>
+        <div class="room-cap">최대 4인 · 커플 · 소가족</div>
+        <ul class="room-features">
+          <li>독립 마당 + 바비큐장</li>
+          <li>침실 1개 + 다락</li>
+          <li>거실 · 주방 완비</li>
+          <li>커플 · 소가족 최적</li>
+          <li>요금 문의</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:0.75rem; color:rgba(255,255,255,0.25); margin-top:1.25rem; text-align:center;">
+      * 정확한 요금은 예약 문의 시 안내 / 주말·성수기 가격 별도 적용
+    </p>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<div id="experience">
+<div class="section">
+  <span class="section-tag">experience</span>
+  <h2 class="section-title fade-up">이렇게 즐기시면<br>딱 좋습니다</h2>
+  <div class="exp-timeline">
+    <div class="exp-item fade-up">
+      <div class="exp-time">오후 체크인</div>
+      <div class="exp-dot"></div>
+      <div class="exp-content">
+        <div class="exp-title">마당에서 바비큐</div>
+        <div class="exp-desc">장작 피우고 고기 굽고, 천천히 저녁 시간. 특별한 계획 없이도 충분합니다.</div>
+      </div>
+    </div>
+    <div class="exp-item fade-up">
+      <div class="exp-time">밤</div>
+      <div class="exp-dot"></div>
+      <div class="exp-content">
+        <div class="exp-title">마당에서 별 구경</div>
+        <div class="exp-desc">맑은 날 기준, 도심에서 보던 밤하늘과 다릅니다. 맥주 한 캔이면 완성.</div>
+      </div>
+    </div>
+    <div class="exp-item fade-up">
+      <div class="exp-time">이른 아침</div>
+      <div class="exp-dot"></div>
+      <div class="exp-content">
+        <div class="exp-title">계룡산 산책</div>
+        <div class="exp-desc">가볍게 30분~1시간 코스. 목적은 아침 공기입니다. 정상 안 가셔도 됩니다.</div>
+      </div>
+    </div>
+    <div class="exp-item fade-up">
+      <div class="exp-time">체크아웃</div>
+      <div class="exp-dot"></div>
+      <div class="exp-content">
+        <div class="exp-title">다음 예약 잡고 가기</div>
+        <div class="exp-desc">다녀오신 분들 대부분 재방문합니다. 주말·연휴는 빠르게 마감됩니다.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- REVIEWS -->
+<section class="review-section">
+  <div class="review-inner">
+    <span class="section-tag">reviews</span>
+    <h2 class="section-title fade-up">다녀오신 분들의 이야기</h2>
+    <div class="review-grid">
+      <div class="review-card fade-up">
+        <div class="review-text">"바비큐 하고 별 보면서 맥주 한 캔. 이게 전부인데 완벽한 하루였어요."</div>
+        <div class="review-author">가족 여행객</div>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-text">"계룡산 아침 공기 마시러 또 오고 싶습니다. 조용하고 깨끗했어요."</div>
+        <div class="review-author">커플 투숙객</div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-item fade-up">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">운영 연수</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-num">4.8★</div>
+        <div class="stat-label">평균 평점</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-num">재방문↑</div>
+        <div class="stat-label">단골 비율 높음</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<div class="section section-sm">
+  <span class="section-tag">why limehu</span>
+  <h2 class="section-title fade-up">수많은 펜션 중<br>라임휴인 이유</h2>
+  <div class="why-list">
+    <div class="why-item fade-up">
+      <div class="why-idx">01</div>
+      <div>
+        <div class="why-title">계룡산 접근성</div>
+        <div class="why-desc">대전·세종·공주에서 40분 이내. 멀지 않은데 확실히 달라집니다.</div>
+      </div>
+    </div>
+    <div class="why-item fade-up">
+      <div class="why-idx">02</div>
+      <div>
+        <div class="why-title">독립 공간 보장</div>
+        <div class="why-desc">다른 투숙객과 동선이 겹치지 않습니다. 마당도, 바비큐도 우리 것.</div>
+      </div>
+    </div>
+    <div class="why-item fade-up">
+      <div class="why-idx">03</div>
+      <div>
+        <div class="why-title">20년 운영 노하우</div>
+        <div class="why-desc">오래된 단골이 있는 데는 이유가 있습니다.</div>
+      </div>
+    </div>
+    <div class="why-item fade-up">
+      <div class="why-idx">04</div>
+      <div>
+        <div class="why-title">자연 중심 설계</div>
+        <div class="why-desc">인위적인 꾸밈보다 산 자체가 배경입니다. 그게 이 곳의 정체성입니다.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<div class="section section-sm" id="faq">
+  <span class="section-tag">faq</span>
+  <h2 class="section-title fade-up">자주 묻는 질문</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">바비큐 장비는 제공되나요?</div>
+      <div class="faq-a">화로 및 기본 바비큐 도구 제공됩니다. 식재료는 별도 지참하셔야 합니다. 근처 마트에서 미리 구매 권장드립니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">반려동물 동반이 가능한가요?</div>
+      <div class="faq-a">예약 문의 시 확인 부탁드립니다. 객실 및 시기에 따라 다를 수 있습니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">체크인·체크아웃 시간은 언제인가요?</div>
+      <div class="faq-a">체크인 15:00 / 체크아웃 11:00 기준입니다. 변동 가능하니 예약 시 확인해 주세요.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">주변에 편의시설이 있나요?</div>
+      <div class="faq-a">차로 10분 내 마트·편의점이 있습니다. 바비큐 재료는 미리 준비해 오시는 것을 권장합니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">계약 최소 기간이 있나요?</div>
+      <div class="faq-a">1박부터 예약 가능합니다. 연박 시 별도 혜택이 있을 수 있으니 문의 주세요.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <span class="cta-label">reservation</span>
+  <h2 class="cta-title">오늘 날짜 확인하고<br>예약하세요</h2>
+  <p class="cta-sub">
+    주말·연휴 성수기는 빠르게 마감됩니다.<br>
+    원하는 날짜가 있다면 지금 바로 문의해보세요.
+  </p>
+  <a href="tel:000-0000-0000" class="cta-btn">전화 문의하기 →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    계룡산 라임휴 프리지아 펜션<br>
+    충청남도 계룡산 일원 · 문의: 예약 페이지 참조<br>
+    © 2024 Limehu Freesia Pension. All rights reserved.
+  </p>
+</footer>
+
+<script>
+  // Scroll fade-up
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // FAQ toggle
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
